@@ -3,251 +3,642 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mihir Gamre | Portfolio</title>
+    <meta name="description" content="Mihir Gamre's software engineering portfolio featuring AI projects, full-stack systems, tutoring, and undergraduate teaching experience at Arizona State University.">
+    <title>Mihir Gamre | Software Engineering Portfolio</title>
+    <link rel="preconnect" href="https://github.com">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Cpath d='M16 44V20h7l9 14 9-14h7v24h-7V31L34 42h-4l-7-11v13h-7z' fill='%23f8fafc'/%3E%3C/svg%3E">
     <style>
+        :root {
+            --ink: #111827;
+            --muted: #5b6472;
+            --line: #d8dee8;
+            --paper: #ffffff;
+            --soft: #f6f8fb;
+            --navy: #111827;
+            --blue: #2563eb;
+            --teal: #0f766e;
+            --shadow: 0 16px 40px rgba(17, 24, 39, 0.1);
+        }
+
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #222;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--ink);
+            background: var(--soft);
             line-height: 1.6;
         }
 
-        header {
-            background: linear-gradient(135deg, #0f172a, #2563eb);
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
+        a {
+            color: inherit;
         }
 
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
+        a:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, 0.35);
+            outline-offset: 3px;
         }
 
-        header p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+        .site-header {
+            background: var(--paper);
+            border-bottom: 1px solid var(--line);
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
-        .btn {
-            display: inline-block;
-            background: white;
-            color: #2563eb;
+        .nav {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
             text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: 0.3s;
+            font-weight: 800;
         }
 
-        .btn:hover {
-            background: #dbeafe;
-            transform: scale(1.05);
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.95rem;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 40px auto;
+        .nav-links a {
+            text-decoration: none;
         }
 
-        .section-title {
-            font-size: 2rem;
-            color: #1e3a8a;
-            margin-bottom: 20px;
-            border-left: 6px solid #2563eb;
-            padding-left: 12px;
+        .nav-links a:hover {
+            color: var(--blue);
         }
 
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 18px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            margin-bottom: 25px;
-            transition: 0.3s;
+        .hero {
+            background:
+                linear-gradient(135deg, rgba(17, 24, 39, 0.97), rgba(15, 118, 110, 0.9)),
+                url("https://github.com/mgamre.png");
+            background-size: cover;
+            background-position: center;
+            color: white;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        .hero-inner {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+            min-height: 560px;
+            display: flex;
+            align-items: center;
+            padding: 72px 0;
         }
 
-        .skills-list {
+        .eyebrow {
+            color: #a7f3d0;
+            font-weight: 800;
+            margin: 0 0 14px;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+        }
+
+        h1 {
+            font-size: clamp(2.6rem, 7vw, 5.7rem);
+            line-height: 0.98;
+            margin: 0;
+            max-width: 760px;
+        }
+
+        .hero-copy {
+            max-width: 690px;
+            color: #e5edf7;
+            font-size: 1.12rem;
+            margin: 22px 0 0;
+        }
+
+        .actions {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 0 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 800;
+            border: 1px solid transparent;
+        }
+
+        .button.primary {
+            background: #ffffff;
+            color: var(--navy);
+        }
+
+        .button.secondary {
+            color: white;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        main {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 66px 0 0;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 24px;
+            margin-bottom: 22px;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            line-height: 1.08;
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: var(--muted);
+            max-width: 500px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .panel,
+        .project-card,
+        .experience-card {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .panel {
+            padding: 28px;
+        }
+
+        .panel p {
+            margin: 0;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
             list-style: none;
-            margin-top: 10px;
+            padding: 0;
+            margin: 18px 0 0;
         }
 
-        .skills-list li {
-            background: #dbeafe;
-            color: #1e3a8a;
-            padding: 10px 16px;
-            border-radius: 20px;
-            font-weight: bold;
+        .skills li {
+            background: #e8f0ff;
+            color: #1d4ed8;
+            border: 1px solid #c7d8ff;
+            border-radius: 999px;
+            padding: 7px 11px;
+            font-size: 0.9rem;
+            font-weight: 700;
         }
 
-        .project, .experience-item {
-            margin-bottom: 20px;
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
         }
 
-        .project h3, .experience-item h3 {
-            color: #0f172a;
+        .project-card {
+            padding: 26px;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card.featured {
+            grid-column: span 2;
+            min-height: 310px;
+            background: linear-gradient(135deg, #ffffff 0%, #eef7ff 100%);
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .tag {
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            color: var(--muted);
+            padding: 5px 9px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            background: rgba(255, 255, 255, 0.74);
+        }
+
+        h3 {
+            margin: 0 0 8px;
+            font-size: 1.35rem;
+        }
+
+        .project-card p,
+        .experience-card p {
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .project-card ul,
+        .experience-card ul {
+            margin: 16px 0 0;
+            padding-left: 19px;
+            color: var(--muted);
+        }
+
+        .project-card li,
+        .experience-card li {
             margin-bottom: 8px;
         }
 
-        .project span, .experience-item span {
-            color: #555;
-            font-size: 0.95rem;
-            display: block;
-            margin-bottom: 8px;
+        .project-link {
+            color: var(--blue);
+            display: inline-flex;
+            font-weight: 800;
+            margin-top: 16px;
+            text-decoration: none;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .experience-list {
+            display: grid;
+            gap: 16px;
+        }
+
+        .experience-card {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 24px;
+            padding: 24px;
+        }
+
+        .role-meta {
+            color: var(--muted);
+            font-weight: 700;
+            font-size: 0.92rem;
+        }
+
+        .contact-band {
+            margin: 66px 0 0;
+            padding: 34px;
+            background: var(--navy);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .contact-band h2 {
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.32);
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-weight: 800;
         }
 
         footer {
-            background: #0f172a;
-            color: white;
+            color: var(--muted);
             text-align: center;
-            padding: 25px 20px;
-            margin-top: 40px;
+            padding: 34px 16px 40px;
         }
 
-        .contact-info p {
-            margin: 8px 0;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2rem;
+        @media (max-width: 860px) {
+            .nav {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 16px 0;
+                gap: 12px;
             }
 
-            .section-title {
-                font-size: 1.6rem;
+            .nav-links {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 4px;
+            }
+
+            .about-grid,
+            .project-grid,
+            .experience-card {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-inner {
+                min-height: auto;
+                padding: 56px 0;
+            }
+
+            .project-card.featured {
+                grid-column: span 1;
+            }
+
+            .section-heading,
+            .contact-band {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .contact-links {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .panel,
+            .project-card,
+            .experience-card,
+            .contact-band {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>Mihir Gamre</h1>
-        <p>Computer Science Student | Software Engineering | Tutor</p>
-        <a class="btn" href="https://www.linkedin.com/in/mihir-gamre-b52609271/" target="_blank">View LinkedIn</a>
+    <header class="site-header">
+        <nav class="nav" aria-label="Primary navigation">
+            <a class="brand" href="#top">Mihir Gamre</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="container">
-
-        <section class="card">
-            <h2 class="section-title">About Me</h2>
-            <p>
-                I am a Computer Science student at Arizona State University with a 4.00 GPA,
-                passionate about software engineering, problem solving, tutoring, and building
-                practical technology solutions. I enjoy learning new tools, collaborating with others,
-                and creating projects that are both functional and meaningful.
-            </p>
-        </section>
-
-        <section class="card">
-            <h2 class="section-title">Education</h2>
-            <p><strong>Arizona State University, Tempe, AZ</strong></p>
-            <p>B.S. in Computer Science (Software Engineering)</p>
-            <p>May 2023 – Present</p>
-            <p><strong>GPA:</strong> 4.00 / 4.00</p>
-        </section>
-
-        <section class="card">
-            <h2 class="section-title">Technical Skills</h2>
-            <ul class="skills-list">
-                <li>C</li>
-                <li>C++</li>
-                <li>Java</li>
-                <li>Python</li>
-                <li>JavaFX</li>
-                <li>JUnit</li>
-                <li>SQL</li>
-                <li>HTML</li>
-                <li>MATLAB</li>
-                <li>AutoCAD</li>
-                <li>Microsoft Office</li>
-                <li>Google Drive</li>
-                <li>Oracle</li>
-            </ul>
-        </section>
-
-        <section class="card">
-            <h2 class="section-title">Projects</h2>
-
-            <div class="project">
-                <h3>Recursive-Descent Compiler</h3>
-                <span>August 2025 – October 2025</span>
-                <p>
-                    Developed a recursive-descent compiler in C/C++ for a custom language with full syntax
-                    and semantic analysis. Added error detection, polynomial evaluation, degree computation,
-                    and warnings for uninitialized variables and useless assignments.
+    <section class="hero" id="top" aria-label="Introduction">
+        <div class="hero-inner">
+            <div>
+                <p class="eyebrow">Computer Science at Arizona State University</p>
+                <h1>Building useful AI, full-stack tools, and learning experiences.</h1>
+                <p class="hero-copy">
+                    I am a software engineering student with a 4.00 GPA, focused on practical systems that combine clean code, thoughtful interfaces, and real-world problem solving.
                 </p>
+                <div class="actions">
+                    <a class="button primary" href="#projects">View Projects</a>
+                    <a class="button secondary" href="https://www.linkedin.com/in/mihir-gamre-b52609271/" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a class="button secondary" href="https://github.com/mgamre" target="_blank" rel="noreferrer">GitHub</a>
+                    <a class="button secondary" href="https://github.com/mihirgamre?tab=repositories" target="_blank" rel="noreferrer">More Repos</a>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="project">
-                <h3>Q&amp;A Discussion Platform</h3>
-                <span>January 2025 – May 2025</span>
-                <p>
-                    Built a JavaFX and SQL application modeled after Ed Discussion. Worked on moderation,
-                    categories, UML diagrams, backend database integration, and object-oriented design for
-                    a maintainable codebase.
-                </p>
+    <main>
+        <section id="about" aria-labelledby="about-title">
+            <div class="section-heading">
+                <h2 id="about-title">About</h2>
             </div>
-
-            <div class="project">
-                <h3>Pokemon Game</h3>
-                <span>August 2024 – December 2024</span>
-                <p>
-                    Designed and developed a Pokemon game in C/C++ with map generation, player movement,
-                    turn-based battles, custom Pokemon characters, and modular backend logic.
-                </p>
+            <div class="about-grid">
+                <div class="panel">
+                    <p>
+                        I am pursuing a B.S. in Computer Science with a software engineering focus at Arizona State University. I enjoy turning ambiguous problems into organized systems, then making those systems easier for other people to use.
+                    </p>
+                </div>
+                <div class="panel">
+                    <p><strong>Core skills</strong></p>
+                    <ul class="skills" aria-label="Technical skills">
+                        <li>Java</li>
+                        <li>Python</li>
+                        <li>C/C++</li>
+                        <li>JavaScript</li>
+                        <li>TypeScript</li>
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                        <li>FastAPI</li>
+                        <li>PostgreSQL</li>
+                        <li>JavaFX</li>
+                        <li>SQL</li>
+                        <li>JUnit</li>
+                        <li>HTML/CSS</li>
+                        <li>REST APIs</li>
+                        <li>AI/LLM Tools</li>
+                        <li>Docker</li>
+                        <li>Git</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <section class="card">
-            <h2 class="section-title">Work Experience</h2>
-
-            <div class="experience-item">
-                <h3>Engineering Tutor — PULSE Tutoring, Arizona State University</h3>
-                <span>October 2025 – Present</span>
-                <p>
-                    Support students in Math and Computer Science through one-on-one and group tutoring sessions,
-                    helping reinforce concepts and improve problem-solving skills. Collaborate with other tutors
-                    and apply training-based instructional methods.
-                </p>
+        <section id="projects" aria-labelledby="projects-title">
+            <div class="section-heading">
+                <h2 id="projects-title">Projects</h2>
+                <p>Recent work that shows full-stack thinking, AI-assisted automation, and strong CS fundamentals.</p>
             </div>
 
-            <div class="experience-item">
-                <h3>IT Intern — SRS Pharmaceuticals Pvt Ltd., India</h3>
-                <span>June 2023 – August 2023</span>
-                <p>
-                    Completed CEH and CompTIA Security+ modules, assisted employees with laptop-related technical
-                    issues, and gained exposure to productivity and cost-reduction strategies through Shield 2024.
-                </p>
+            <div class="project-grid">
+                <article class="project-card featured">
+                    <div>
+                        <div class="tag-row">
+                            <span class="tag">Latest Project</span>
+                            <span class="tag">Full Stack</span>
+                            <span class="tag">AI Agents</span>
+                            <span class="tag">Backend</span>
+                        </div>
+                        <h3>TaskForge</h3>
+                        <p>
+                            My latest project: a task and workflow system centered on breaking complex goals into structured, trackable work. It highlights backend design, clear status modeling, and AI-assisted execution patterns.
+                        </p>
+                        <ul>
+                            <li>Designed around turning broad requests into organized task flows.</li>
+                            <li>Focused on dependable project state, workflow clarity, and practical AI assistance.</li>
+                            <li>Built as a stronger showcase of full-stack engineering and product thinking.</li>
+                        </ul>
+                        <a class="project-link" href="https://github.com/mihirgamre/taskforge" target="_blank" rel="noreferrer">View repository</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div>
+                        <div class="tag-row">
+                            <span class="tag">AI</span>
+                            <span class="tag">Automation</span>
+                            <span class="tag">Product Design</span>
+                        </div>
+                        <h3>ApplyWise AI</h3>
+                        <p>
+                            An AI-powered application assistant designed to help students and early-career candidates organize job searches, tailor materials, and move from scattered postings to clearer next steps.
+                        </p>
+                        <a class="project-link" href="https://github.com/mihirgamre/Applywise-AI" target="_blank" rel="noreferrer">View repository</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div>
+                        <div class="tag-row">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Express</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                        <h3>Gamehub</h3>
+                        <p>
+                            Built a Steam-inspired full-stack web application for browsing games, filtering by genre, adding titles to a cart, checking out, managing a game library, writing reviews, and interacting with friends.
+                        </p>
+                        <a class="project-link" href="https://github.com/mgamre/Gamehub" target="_blank" rel="noreferrer">View repository</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div>
+                        <div class="tag-row">
+                            <span class="tag">C/C++</span>
+                            <span class="tag">Compiler Design</span>
+                        </div>
+                        <h3>Recursive-Descent Compiler</h3>
+                        <p>
+                            Developed a compiler for a custom language with syntax and semantic analysis, error detection, polynomial evaluation, degree computation, and warnings for uninitialized variables.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div>
+                        <div class="tag-row">
+                            <span class="tag">JavaFX</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">OOP</span>
+                        </div>
+                        <h3>Q&amp;A Discussion Platform</h3>
+                        <p>
+                            Built an Ed Discussion-style JavaFX and SQL application with categories, moderation workflows, UML planning, backend persistence, and maintainable object-oriented structure.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div>
+                        <div class="tag-row">
+                            <span class="tag">C/C++</span>
+                            <span class="tag">Game Logic</span>
+                        </div>
+                        <h3>Pokemon Game</h3>
+                        <p>
+                            Designed a C/C++ Pokemon game with map generation, player movement, turn-based battles, custom Pokemon characters, and modular backend logic.
+                        </p>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <section class="card contact-info">
-            <h2 class="section-title">Contact</h2>
-            <p><strong>Phone:</strong> (623)-285-3246</p>
-            <p><strong>Email:</strong> mgamre@asu.edu</p>
-            <p><strong>LinkedIn:</strong> www.linkedin.com/in/mihir-gamre</p>
+        <section id="experience" aria-labelledby="experience-title">
+            <div class="section-heading">
+                <h2 id="experience-title">Experience</h2>
+                <p>Technical work strengthened by teaching, mentoring, and communicating difficult concepts clearly.</p>
+            </div>
+
+            <div class="experience-list">
+                <article class="experience-card">
+                    <div>
+                        <h3>FSE 100 UGLA</h3>
+                        <p class="role-meta">Arizona State University</p>
+                    </div>
+                    <div>
+                        <p>
+                            Support first-year engineering students as an undergraduate learning assistant, helping teams understand course expectations, engineering design habits, and project-based problem solving.
+                        </p>
+                        <ul>
+                            <li>Guide students through technical questions, collaboration challenges, and design-process decisions.</li>
+                            <li>Help create a productive classroom environment where students can ask questions and iterate confidently.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="experience-card">
+                    <div>
+                        <h3>Engineering Tutor</h3>
+                        <p class="role-meta">PULSE Tutoring, ASU | Oct 2025 - Present</p>
+                    </div>
+                    <div>
+                        <p>
+                            Tutor students in math and computer science through one-on-one and group sessions, reinforcing concepts and improving problem-solving strategies.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="experience-card">
+                    <div>
+                        <h3>IT Intern</h3>
+                        <p class="role-meta">SRS Pharmaceuticals Pvt Ltd. | Jun 2024 - Aug 2024</p>
+                    </div>
+                    <div>
+                        <p>
+                            Assisted employees with laptop-related technical issues, completed CEH and CompTIA Security+ modules, and gained exposure to productivity and cost-reduction strategies.
+                        </p>
+                    </div>
+                </article>
+            </div>
         </section>
 
-    </div>
+        <section class="contact-band" id="contact" aria-labelledby="contact-title">
+            <div>
+                <h2 id="contact-title">Let's connect.</h2>
+                <p>I am open to full-time roles in software engineering, software development, AI engineering, and related backend or full-stack positions.</p>
+            </div>
+            <div class="contact-links" aria-label="Contact links">
+                <a href="mailto:mihir.gamre@gmail.com">Email</a>
+                <a href="tel:+16232853246">Phone</a>
+                <a href="https://www.linkedin.com/in/mihir-gamre-b52609271/" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href="https://github.com/mgamre" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://github.com/mihirgamre?tab=repositories" target="_blank" rel="noreferrer">More Repos</a>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>© 2026 Mihir Gamre | Portfolio</p>
+        <p>&copy; 2026 Mihir Gamre. Built for GitHub Pages.</p>
     </footer>
-
 </body>
 </html>
